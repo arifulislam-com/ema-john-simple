@@ -1,8 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useAuth } from '../Login/useAuth';
+
+
 
 const Cart = (props) => {
     const cart = props.cart;
+    const auth = useAuth();
+    console.log(auth.user); 
     
     let total = 0;
     for(let i = 0; i < cart.length; i++){
@@ -37,9 +41,12 @@ const Cart = (props) => {
             <p><small>Tax + Vat: {tax}</small></p>
             <p>Total Price: {grandTotal}</p>
             <br/>
-            <Link to="/review">
-            <button className="main-button">Review Order</button>
-            </Link>
+            {
+                props.children
+            }
+            {
+                <p>{}</p>
+            }
         </div>
     );
 };
